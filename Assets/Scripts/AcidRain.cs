@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AcidRain : MonoBehaviour
 {
-    [SerializeField] private float _speed = 6f;
+    [SerializeField] private float _speed = 5f;
     [SerializeField] private float _causeDamageRate = 2f;
     private float _canCauseDamage = -1f;
     public bool vaccineHit;
