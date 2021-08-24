@@ -6,7 +6,7 @@ using TMPro;
 
 public class CoinCounter : MonoBehaviour
 {
-    public static int scoreCounter = 0;
+    public static int scoreCounter = 100;
 
     //private Text _score;
     private TextMeshProUGUI _score;
