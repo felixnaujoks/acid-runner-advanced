@@ -282,7 +282,7 @@ public class Player : MonoBehaviour
     void fellDown()
     {
         // Player dies when falling down
-        if (transform.position.y < -30f)
+        if (transform.position.y < -40f)
         {
             GameObject.Find("kaya").GetComponent<Animations>().animator.SetBool("isFalling", true);
             FindObjectOfType<GameManager>().EndGame();
