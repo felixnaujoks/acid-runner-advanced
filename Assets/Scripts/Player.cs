@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private float _gravity = -50f;
     private CharacterController _characterController;
     private float _yValue;
+    private float _zValue;
     private bool _groundCheck;
     private float _timePassed;
     private float _whenToPay = 1f;
@@ -228,7 +229,6 @@ public class Player : MonoBehaviour
            velocity.y += _gravity * Time.deltaTime;
         }*/
     }
-
     void PlayerMovement()
     {
         // Let the player jump
@@ -243,12 +243,41 @@ public class Player : MonoBehaviour
         {
             GameObject.Find("kaya").GetComponent<Animations>().animator.SetBool("isJump", false);
         }
+
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            _zValue += 2;
+        }
+        if (Input.GetButtonDown("Vertical"))
+        {
+            _zValue -= 2;
+        }
+
+        // Move the player forward
+        //_characterController.Move(new Vector3(horizontalInput * runSpeed, 0, 0) * Time.deltaTime);
+        _characterController.Move(new Vector3(baseSpeed * _pace, _yValue, _zValue) * Time.deltaTime);
+
+    }
+    /*void PlayerMovement()
+    {
+        // Let the player jump
+        if (_groundCheck && Input.GetButtonDown("Jump"))
+        {
+            GameObject.Find("kaya").GetComponent<Animations>().animator.SetBool("isJump", true);
+
+            _yValue += Mathf.Sqrt(_jumpHeight * -2 * _gravity);
+        }
+
+        else if (!_groundCheck)
+        {
+            GameObject.Find("kaya").GetComponent<Animations>().animator.SetBool("isJump", false);
+        }
         // Move the player forward
         //_characterController.Move(new Vector3(horizontalInput * runSpeed, 0, 0) * Time.deltaTime);
         _characterController.Move(new Vector3(baseSpeed * _pace, _yValue, 0) * Time.deltaTime);
 
         
-    }
+    }*/
 
     void fellDown()
     {
