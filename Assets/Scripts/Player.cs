@@ -243,16 +243,19 @@ public class Player : MonoBehaviour
         {
             GameObject.Find("kaya").GetComponent<Animations>().animator.SetBool("isJump", false);
         }
-
-        if (Input.GetButtonDown("Horizontal"))
+        
+        if (Input.GetButton("Horizontal"))
         {
-            _zValue += 2;
+            _zValue = 5f;
         }
-        if (Input.GetButtonDown("Vertical"))
+        else if (Input.GetButton("Vertical"))
         {
-            _zValue -= 2;
+            _zValue = -5f;
         }
-
+        else
+        {
+            _zValue = 0f;
+        }
         // Move the player forward
         //_characterController.Move(new Vector3(horizontalInput * runSpeed, 0, 0) * Time.deltaTime);
         _characterController.Move(new Vector3(baseSpeed * _pace, _yValue, _zValue) * Time.deltaTime);
