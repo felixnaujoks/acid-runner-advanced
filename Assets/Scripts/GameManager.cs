@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over");
             //StopMoving();
             //Invoke gives us a delay of the called methods; here resetting the counters and then restarting the game
+            Invoke("camSwitch", 2.4f);
             Invoke("resetVal", 2.5f);
             //personal highscore updating
             Invoke("comparingScore",2.5f);
@@ -53,6 +54,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void camSwitch()
+    {
+        GameObject.Find("CameraScript").GetComponent<CameraSwitch>().sideCamEnding = true;
+    }
+    
     /*void StopMoving()
     {
         stopMoving = true;
