@@ -13,19 +13,29 @@ public class CameraSwitch : MonoBehaviour {
 
     public bool sideCamEnding = false;
     public bool checkPointSwitchCam = false;
+    public bool firstRound = true;
     
     
     void Start()
     {
 
-        //There appears a problem when there are multiple cameras and there audiolisteners are
+        //There appears a problem when there are multiple cameras and their audiolisteners are
         //on, as Unity just wants to have one activ Audiolistener. Therefore to later deactivate
         //them, we pull them here first
         mainCameraAudio = mainCamera.GetComponent<AudioListener>();
         sideCameraAudio = sideCamera.GetComponent<AudioListener>();
 
-        //set the first camera position remembered from the last round
-        cameraPositionChange(PlayerPrefs.GetInt("CameraPosition"));
+        if (firstRound == true)
+        {
+            cameraPositionChange(1);
+        }
+        else
+        {
+            //set the first camera position remembered from the last round
+            cameraPositionChange(PlayerPrefs.GetInt("CameraPosition"));
+        }
+        
+        
     }
     
     void Update()
@@ -52,7 +62,7 @@ public class CameraSwitch : MonoBehaviour {
     {
         //making sure the game ends with the side view
         int cameraPositionCounter = PlayerPrefs.GetInt("CameraPosition");
-        if (sideCamEnding && cameraPositionCounter == 0)
+        if (sideCamEnding && cameraPositionCounter == 1)
         {
             cameraPositionCounter++;
             cameraPositionChange(cameraPositionCounter);

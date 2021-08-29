@@ -9,6 +9,7 @@ public class CheckPointCamSwitch : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameObject.Find("CameraScript").GetComponent<CameraSwitch>().checkPointSwitchCam = true;
+            GameObject.Find("CameraScript").GetComponent<CameraSwitch>().firstRound = false;
         }
     }
 }
