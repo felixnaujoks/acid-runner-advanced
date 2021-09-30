@@ -13,6 +13,7 @@ public class FireBall : MonoBehaviour
         transform.Rotate(90 * Time.deltaTime * _rotateSpeed, 0, 0);
     }
 
+    // calls the damage function to reduce live points
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
